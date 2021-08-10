@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.driverprofile.DriverProfileActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="driverProfileViewModel"
+            type="com.sage.cabapp.ui.driverprofile.DriverProfileViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="@dimen/margin_20"
+                    android:background="@drawable/ic_arrow_back_black"
+                    android:onClick="@{()->driverProfileViewModel.onBack()}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_toEndOf="@+id/back"
+                    android:text="Driver Profile"
+                    android:textSize="@dimen/textsize_20" />
+
+            </RelativeLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/driver_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_30"
+                app:civ_border_color="@color/transparent"
+                app:civ_border_width="2dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:drawableEnd="@drawable/ic_driver_verified"
+                android:drawablePadding="@dimen/margin_5"
+                android:gravity="center"
+                android:id="@+id/driver_name"
+                android:textColor="@color/edittext_color"
+                android:textSize="@dimen/textsize_22" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_5"
+                android:gravity="center"
+                android:id="@+id/vehicle_info"
+                android:textColor="@color/edittext_color"
+                android:textSize="@dimen/textsize_16" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:drawableStart="@drawable/ic_driver_profile_pin"
+                android:drawablePadding="@dimen/margin_5"
+                android:gravity="center"
+                android:id="@+id/driver_address"
+                android:textColor="#828282"
+                android:textSize="@dimen/textsize_12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_50"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_driver_trips"
+                        android:drawablePadding="@dimen/margin_5"
+                        android:id="@+id/no_of_trips"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_20" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:text="Trips completed"
+                        android:textColor="#828282"
+                        android:textSize="@dimen/textsize_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_star"
+                        android:drawablePadding="@dimen/margin_5"
+                        android:id="@+id/driver_rating"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_20" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:text="Rate"
+                        android:textColor="#828282"
+                        android:textSize="@dimen/textsize_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_driver_duration"
+                        android:drawablePadding="@dimen/margin_5"
+                        android:id="@+id/driver_exp"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_20" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:text="Sage ally"
+                        android:textColor="#828282"
+                        android:textSize="@dimen/textsize_12" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

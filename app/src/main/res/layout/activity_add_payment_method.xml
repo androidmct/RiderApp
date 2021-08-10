@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addpaymentmethod.AddPaymentMethodActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addPaymentMethodViewModel"
+            type="com.sage.cabapp.ui.addpaymentmethod.AddPaymentMethodViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->addPaymentMethodViewModel.goBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="Add payment method"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:text="Payment method"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginEnd="@dimen/margin_20"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <FrameLayout
+                            android:id="@+id/credit_card"
+                            style="?android:attr/buttonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_5"
+                            android:layout_weight="0.9"
+                            android:background="@drawable/rounded_corner_colorprimary"
+                            android:onClick="@{()->addPaymentMethodViewModel.clickCreditCard()}">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/credit_card_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_credit_card_gray"
+                                android:gravity="center" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/paypal"
+                            style="?android:attr/buttonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:layout_marginEnd="@dimen/margin_5"
+                            android:layout_weight="1.05"
+                            android:background="@drawable/rounded_corner_grey_white"
+                            android:onClick="@{()->addPaymentMethodViewModel.clickPaypal()}">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/paypal_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_paypal"
+                                android:gravity="center" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/google_pay"
+                            style="?android:attr/buttonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_3"
+                            android:layout_weight="1.05"
+                            android:background="@drawable/rounded_corner_grey_white"
+                            android:onClick="@{()->addPaymentMethodViewModel.clickGooglePay()}">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/gpay_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_google_pay"
+                                android:gravity="center" />
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/card_type_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <LinearLayout
+                        android:id="@+id/credit_card_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:background="@drawable/rectangle_light_grey">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/margin_20"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/et_card_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toStartOf="@+id/card_camera"
+                                    android:background="@color/white"
+                                    android:drawablePadding="@dimen/margin_10"
+                                    android:hint="Card number"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="phone"
+                                    android:maxLength="23"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/card_camera"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/margin_10"
+                                    android:layout_marginEnd="@dimen/margin_10"
+                                    android:background="@drawable/ic_camera_black"
+                                    android:onClick="@{()->addPaymentMethodViewModel.clickCardCamera()}" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:background="@drawable/rectangle_light_grey">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/margin_20"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/et_cardholder_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
+                                    android:drawablePadding="@dimen/margin_10"
+                                    android:hint="Card holder name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapSentences"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_16" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:background="@drawable/rectangle_light_grey">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="@dimen/margin_20"
+                                    android:paddingTop="@dimen/margin_10"
+                                    android:paddingEnd="@dimen/margin_20"
+                                    android:paddingBottom="@dimen/margin_10">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_card_date"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:hint="MM/YY"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="date"
+                                        android:maxLength="5"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/edittext_color"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_10"
+                                android:layout_weight="1"
+                                android:background="@drawable/rectangle_light_grey">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="@dimen/margin_20"
+                                    android:paddingTop="@dimen/margin_10"
+                                    android:paddingEnd="@dimen/margin_20"
+                                    android:paddingBottom="@dimen/margin_10">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_card_cvv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:hint="CVV"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:maxLength="3"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/edittext_color"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <com.manojbhadane.QButton
+                            android:id="@+id/btn_add_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_20"
+                            android:gravity="center"
+                            android:onClick="@{()->addPaymentMethodViewModel.submitCreditCard()}"
+                            android:text="@string/add_new_card"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_16"
+                            app:qb_backgroundColor="@color/colorPrimary"
+                            app:qb_radius="0"
+                            app:qb_strokeColor="@color/space_transparent"
+                            app:qb_strokeWidth="0" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/paypal_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:background="@drawable/rectangle_light_grey">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/margin_20"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/margin_20"
+                                android:paddingBottom="@dimen/margin_10">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/et_paypal_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:hint="PayPal email address"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_16" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:visibility="gone"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:background="@drawable/rectangle_light_grey">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingStart="@dimen/margin_20"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/margin_20"
+                                android:paddingBottom="@dimen/margin_10">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/et_paypal_password"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:hint="PayPal password"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textPassword"
+                                    android:maxLength="32"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_16" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <com.manojbhadane.QButton
+                            android:id="@+id/btn_add_paypal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_20"
+                            android:gravity="center"
+                            android:onClick="@{()->addPaymentMethodViewModel.submitPaypal()}"
+                            android:text="@string/add_new_account"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_16"
+                            app:qb_backgroundColor="@color/colorPrimary"
+                            app:qb_radius="0"
+                            app:qb_strokeColor="@color/space_transparent"
+                            app:qb_strokeWidth="0" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/googlepay_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:text="Pay using Google Pay. It's fast, easy and safe."
+                            android:textColor="@color/description"
+                            android:textSize="@dimen/textsize_14" />
+
+                        <com.manojbhadane.QButton
+                            android:id="@+id/btn_add_googlepay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_40"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_20"
+                            android:gravity="center"
+                            android:onClick="@{()->addPaymentMethodViewModel.submitGooglePay()}"
+                            android:text="@string/done"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_16"
+                            app:qb_backgroundColor="@color/colorPrimary"
+                            app:qb_radius="0"
+                            app:qb_strokeColor="@color/space_transparent"
+                            app:qb_strokeWidth="0" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

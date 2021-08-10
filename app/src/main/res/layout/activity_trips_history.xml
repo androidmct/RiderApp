@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.triphistory.TripHistoryActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="tripHistoryViewModel"
+            type="com.sage.cabapp.ui.triphistory.TripHistoryViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->tripHistoryViewModel.goBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="@string/trip_history"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/trips_found"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginBottom="@dimen/margin_20"
+                        android:text="Your completed trips"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D0D0D0" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/trip_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/margin_20"
+                    android:id="@+id/no_trips"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:text="You have no trips completed yet. But hey, give it a shot!!!"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_24" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

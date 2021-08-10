@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.accountsettings.AccountSettingsActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="accountSettingsViewModel"
+            type="com.sage.cabapp.ui.accountsettings.AccountSettingsViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="@dimen/margin_20"
+                            android:background="@drawable/ic_arrow_back_black"
+                            android:onClick="@{()->accountSettingsViewModel.onBack()}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/margin_10"
+                            fontPath="fonts/Roboto-Medium.ttf"
+                            android:layout_toEndOf="@+id/back"
+                            android:text="@string/account_settings"
+                            android:textColor="@color/heading"
+                            android:textSize="@dimen/textsize_20" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+               <ScrollView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:paddingBottom="@dimen/margin_30"
+                       android:orientation="vertical">
+                       <RelativeLayout
+                           android:id="@+id/change_image"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center_horizontal"
+                           android:layout_marginTop="@dimen/margin_20"
+                           android:onClick="@{()->accountSettingsViewModel.changeprofilepic()}">
+
+                           <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                               android:id="@+id/profile_image"
+                               android:layout_width="140dp"
+                               android:layout_height="140dp"
+                               app:civ_border_color="@color/transparent"
+                               app:civ_border_width="2dp" />
+
+                           <androidx.appcompat.widget.AppCompatImageView
+                               android:layout_width="42dp"
+                               android:layout_height="42dp"
+                               android:layout_alignEnd="@+id/profile_image"
+                               android:layout_alignBottom="@+id/profile_image"
+                               android:background="@drawable/ic_edit_avatar_new" />
+
+                       </RelativeLayout>
+
+                       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="@dimen/margin_5"
+                           android:layout_marginTop="@dimen/margin_25"
+                           android:background="@color/light_gray" />
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:onClick="@{()->accountSettingsViewModel.editName()}"
+                           android:orientation="vertical">
+
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_margin="@dimen/margin_15">
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_centerVertical="true"
+                                   android:layout_toStartOf="@+id/edit_name_icon"
+                                   android:orientation="vertical">
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:text="Name"
+                                       android:textColor="@color/edittext_color"
+                                       android:textSize="@dimen/textsize_14" />
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:id="@+id/et_name"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:textColor="@color/description"
+                                       android:textSize="@dimen/textsize_12" />
+                               </LinearLayout>
+
+                               <androidx.appcompat.widget.AppCompatImageView
+                                   android:id="@+id/edit_name_icon"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentEnd="true"
+                                   android:layout_centerVertical="true"
+                                   android:background="@drawable/ic_edit_pencil" />
+                           </RelativeLayout>
+
+                           <View
+                               android:layout_width="match_parent"
+                               android:layout_height="1dp"
+                               android:background="#C2C2C2" />
+                       </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:onClick="@{()->accountSettingsViewModel.editPhone()}"
+                           android:orientation="vertical">
+
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_margin="@dimen/margin_15">
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_centerVertical="true"
+                                   android:layout_toStartOf="@+id/edit_phone_icon"
+                                   android:orientation="vertical">
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:text="Phone"
+                                       android:textColor="@color/edittext_color"
+                                       android:textSize="@dimen/textsize_14" />
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:id="@+id/et_phone"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:textColor="@color/description"
+                                       android:textSize="@dimen/textsize_12" />
+                               </LinearLayout>
+
+                               <androidx.appcompat.widget.AppCompatImageView
+                                   android:id="@+id/edit_phone_icon"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentEnd="true"
+                                   android:layout_centerVertical="true"
+                                   android:background="@drawable/ic_edit_pencil" />
+                           </RelativeLayout>
+
+                           <View
+                               android:layout_width="match_parent"
+                               android:layout_height="1dp"
+                               android:background="#C2C2C2" />
+                       </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:onClick="@{()->accountSettingsViewModel.editEmail()}"
+                           android:orientation="vertical">
+
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_margin="@dimen/margin_15">
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_centerVertical="true"
+                                   android:layout_toStartOf="@+id/edit_email_icon"
+                                   android:orientation="vertical">
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:text="Email"
+                                       android:textColor="@color/edittext_color"
+                                       android:textSize="@dimen/textsize_14" />
+
+                                   <androidx.appcompat.widget.AppCompatTextView
+                                       android:id="@+id/et_email"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:textColor="@color/description"
+                                       android:textSize="@dimen/textsize_12" />
+                               </LinearLayout>
+
+                               <androidx.appcompat.widget.AppCompatImageView
+                                   android:id="@+id/edit_email_icon"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentEnd="true"
+                                   android:layout_centerVertical="true"
+                                   android:background="@drawable/ic_edit_pencil" />
+                           </RelativeLayout>
+
+                           <View
+                               android:layout_width="match_parent"
+                               android:layout_height="1dp"
+                               android:background="#C2C2C2" />
+                       </LinearLayout>
+                   </LinearLayout>
+               </ScrollView>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="@{()->accountSettingsViewModel.logout()}"
+                android:padding="@dimen/margin_15"
+                android:text="Log out"
+                android:textColor="@color/red"
+                android:textSize="@dimen/textsize_14" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

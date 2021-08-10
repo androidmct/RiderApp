@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.freerides.FreeRidesActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="freeRidesViewModel"
+            type="com.sage.cabapp.ui.freerides.FreeRidesViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->freeRidesViewModel.onBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_toEndOf="@+id/back"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:text="@string/free_rides"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_layout"
+                android:layout_below="@+id/upper_layout"
+                android:layout_margin="@dimen/margin_10"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Invite your friends"
+                    android:textColor="@color/heading"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:textSize="@dimen/textsize_24" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:gravity="center"
+                    android:text="Get 10% off when they ride!\nYour friends will get 10% off too for 2 weeks."
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:text="Share your referral code:"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:layout_marginBottom="@dimen/margin_15"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:text="NKSGE19"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textsize_20" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:onClick="@{()->freeRidesViewModel.shareText()}"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:padding="@dimen/margin_10">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_share_message" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:text="Share the code through text"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_14" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->freeRidesViewModel.shareEmail()}"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:padding="@dimen/margin_10">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_share_email" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:text="Share the code through email"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_14" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:onClick="@{()->freeRidesViewModel.shareFacebook()}"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:padding="@dimen/margin_10">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_share_facebook" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:text="Share the code through facebook"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_14" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:onClick="@{()->freeRidesViewModel.shareOtherApps()}"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:padding="@dimen/margin_10">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_share_more" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:text="Share the code through other apps"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_14" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

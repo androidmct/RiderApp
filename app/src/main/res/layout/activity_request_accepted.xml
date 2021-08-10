@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.requestaccepted.RequestAcceptedActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="requestAcceptViewModel"
+            type="com.sage.cabapp.ui.requestaccepted.RequestAcceptedViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.drawerlayout.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            tools:openDrawer="start">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    android:id="@+id/map_view"
+                    android:name="com.sage.cabapp.utils.MySupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/fill_destination_layout" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/menu_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_item"
+                    android:onClick="@{()->requestAcceptViewModel.openMenu()}"
+                    android:padding="@dimen/margin_25"
+                    app:srcCompat="@drawable/ic_menu_black" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/address_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:onClick="@{()->requestAcceptViewModel.clickUpdateAddress()}"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_15"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_current_location_pin" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/source_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_5"
+                                android:ellipsize="end"
+                                android:maxEms="10"
+                                android:maxLines="1"
+                                android:textColor="@color/edittext_color"
+                                android:textSize="@dimen/textsize_14" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1.4">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_right_arrow" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_destination_pin" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/destination_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_5"
+                                android:ellipsize="end"
+                                android:maxEms="10"
+                                android:maxLines="1"
+                                android:textColor="@color/edittext_color"
+                                android:textSize="@dimen/textsize_14" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/emergency_911"
+                    android:layout_width="58dp"
+                    android:layout_height="62dp"
+                    android:layout_above="@+id/fill_destination_layout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="@dimen/margin_10"
+                    android:background="@drawable/emergency_911"
+                    android:onClick="@{()->requestAcceptViewModel.call911()}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/navigation_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/fill_destination_layout"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:layout_toStartOf="@+id/emergency_911"
+                    android:background="@drawable/ic_location_indicator"
+                    android:onClick="@{()->requestAcceptViewModel.clickNavigation()}"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/fill_destination_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/open_arrow_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:onClick="@{()->requestAcceptViewModel.openDetails()}"
+                        android:padding="@dimen/margin_15">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/arrow_up_down"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/ic_arrow_up" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/driver_arrive_minutes"
+                            fontPath="fonts/Roboto-Medium.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/margin_8"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_20"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/driver_name"
+                                fontPath="fonts/Roboto-Medium.ttf"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/heading"
+                                android:textSize="@dimen/textsize_20" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/vehicle_model"
+                                    android:textColor="#4F4F4F"
+                                    android:textSize="@dimen/textsize_14" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    fontPath="fonts/Roboto-Medium.ttf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_5"
+                                    android:id="@+id/driver_plate_number"
+                                    android:background="@drawable/ic_rounded_car_plate_number"
+                                    android:gravity="center"
+                                    android:padding="@dimen/margin_5"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_14" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_star" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/driver_rating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_5"
+                                    android:gravity="center"
+                                    android:text="N/A"
+                                    android:textColor="#4F4F4F"
+                                    android:textSize="@dimen/textsize_14" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.3">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="120dp"
+                                android:layout_height="70dp"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ic_toyota_coralla" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/driver_profile_pic"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:onClick="@{()->requestAcceptViewModel.checkDriver()}"
+                                app:civ_border_color="@color/white"
+                                app:civ_border_width="2dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/details_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#D0D0D0" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:gravity="center_vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:drawableEnd="@drawable/ic_info"
+                                android:drawablePadding="@dimen/margin_5"
+                                android:text="Trip fare"
+                                android:textColor="@color/heading"
+                                android:textSize="@dimen/textsize_14" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/trip_fare"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textColor="@color/heading"
+                                android:textSize="@dimen/textsize_20" />
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:text="You'll pay the price above unless you change your destination or add a stop."
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_12" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/margin_15"
+                            android:layout_marginBottom="@dimen/margin_15"
+                            android:background="#D0D0D0" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_20">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/visa_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/margin_20"
+                                android:layout_toEndOf="@+id/visa_icon"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Personal"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_14" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/card_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/description"
+                                    android:textSize="@dimen/textsize_12" />
+                            </LinearLayout>
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ic_forward_gray" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginEnd="@dimen/margin_20"
+                        android:layout_marginBottom="@dimen/margin_20">
+
+                        <LinearLayout
+                            android:id="@+id/chat_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/rectangle_green"
+                            android:onClick="@{()->requestAcceptViewModel.chatMessage()}">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_12"
+                                android:background="@drawable/ic_messege_green" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/phone_call"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_toStartOf="@+id/chat_message"
+                            android:background="@drawable/rectangle_green"
+                            android:onClick="@{()->requestAcceptViewModel.phoneCall()}">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_12"
+                                android:background="@drawable/ic_phone_green" />
+
+                        </LinearLayout>
+
+                        <com.manojbhadane.QButton
+                            android:id="@+id/cancel_request"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_toStartOf="@+id/phone_call"
+                            android:gravity="center"
+                            android:onClick="@{()->requestAcceptViewModel.cancelRequest()}"
+                            android:text="@string/cancel"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_16"
+                            app:qb_backgroundColor="@color/colorPrimary"
+                            app:qb_radius="0"
+                            app:qb_strokeColor="@color/space_transparent"
+                            app:qb_strokeWidth="0" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <com.ms_square.etsyblur.BlurringView
+                android:id="@id/blurring_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/profile_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_profile_pic"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
+                            android:layout_marginTop="50dp"
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="2dp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_name"
+                            style="@style/TextStyle.Title"
+                            fontPath="fonts/Roboto-Medium.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textsize_26" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_email"
+                            style="@style/TextStyle.Title.Sub"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_layout"
+                        android:layout_margin="@dimen/margin_15"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->requestAcceptViewModel.navClickTripHistory()}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:drawableStart="@drawable/ic_trip_history"
+                                android:drawablePadding="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:text="Trip History" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->requestAcceptViewModel.navClickPayments()}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_8"
+                                android:drawableStart="@drawable/ic_payment_menu"
+                                android:drawablePadding="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:text="Payment" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->requestAcceptViewModel.navClickSavedPlaces()}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:drawableStart="@drawable/ic_saved_places"
+                                android:drawablePadding="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:text="Saved Places" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->requestAcceptViewModel.navClickPromo()}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:drawableStart="@drawable/ic_promo_menu"
+                                android:drawablePadding="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:text="Promo" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->requestAcceptViewModel.navClickFreeRides()}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:drawableStart="@drawable/ic_free_rides"
+                                android:drawablePadding="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:text="Free Rides" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/margin_15"
+                        android:onClick="@{()->requestAcceptViewModel.navClickHelp()}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:drawableStart="@drawable/ic_help_menu"
+                            android:drawablePadding="@dimen/margin_10"
+                            android:gravity="center_vertical"
+                            android:text="Help" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.navigation.NavigationView>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+    </FrameLayout>
+
+</layout>

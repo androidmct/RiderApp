@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_trip_history"
+            android:icon="@drawable/ic_trip_history"
+            android:title="Trip History" />
+
+        <item
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/ic_payment_menu"
+            android:title="Payment" />
+
+        <item
+            android:id="@+id/nav_saved_places"
+            android:icon="@drawable/ic_saved_places"
+            android:title="Saved Places" />
+
+        <item
+            android:id="@+id/nav_promo"
+            android:icon="@drawable/ic_promo_menu"
+            android:title="Promo" />
+
+        <item
+            android:id="@+id/nav_free_rides"
+            android:icon="@drawable/ic_free_rides"
+            android:title="Free Rides" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_menu"
+            android:title="Help" />
+    </group>
+</menu>

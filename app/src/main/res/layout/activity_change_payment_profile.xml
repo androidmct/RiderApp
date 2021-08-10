@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.paymentprofile.ChangePaymentProfileActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="changePaymentViewModel"
+            type="com.sage.cabapp.ui.paymentprofile.ChangePaymentProfileViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->changePaymentViewModel.onBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_5"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="Change the profile or payment"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_25"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginBottom="@dimen/margin_20"
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:text="Select a trip profile"
+                android:textColor="@color/edittext_color"
+                android:textSize="@dimen/textsize_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C2C2C2" />
+
+            <LinearLayout
+                android:id="@+id/personal_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->changePaymentViewModel.personalProfile()}"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_15">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/personal_profile_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_5"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_payment_profile" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:layout_toStartOf="@+id/edit_per_prof_icon"
+                        android:layout_toEndOf="@+id/personal_profile_icon"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Personal profile"
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_14" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/personal_card"
+                            android:textColor="@color/description"
+                            android:textSize="@dimen/textsize_12" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/edit_per_prof_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_forward_gray" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/business_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/create_business_layout"
+                    android:onClick="@{()->changePaymentViewModel.businessProfile()}"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_15">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/business_profile_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/margin_5"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_business_profile" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:layout_toEndOf="@+id/business_profile_icon"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Create business profile"
+                            android:textColor="#4F8EF5"
+                            android:textSize="@dimen/textsize_14" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Separate your business payment and receipts"
+                            android:textColor="@color/description"
+                            android:textSize="@dimen/textsize_12" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->changePaymentViewModel.editbusinessProfile()}"
+                    android:id="@+id/edit_business_layout"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_15">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/actual_business_profile_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/margin_5"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_business_completed" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:layout_toStartOf="@+id/edit_busi_prof_icon"
+                        android:layout_toEndOf="@+id/actual_business_profile_icon"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Business profile"
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_14" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:id="@+id/business_card"
+                            android:textColor="@color/description"
+                            android:textSize="@dimen/textsize_12" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/edit_busi_prof_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_forward_gray" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#C2C2C2" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</layout>

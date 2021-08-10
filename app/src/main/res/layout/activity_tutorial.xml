@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.tutorial.TutorialActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="tutorialViewModel"
+            type="com.sage.cabapp.ui.tutorial.TutorialViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:showIn="@layout/activity_tutorial">
+
+                <com.sage.cabapp.utils.ViewPagerCustomDuration
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/layoutDots" />
+
+                <LinearLayout
+                    android:id="@+id/layoutDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dots_height"
+                    android:layout_above="@+id/get_started"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+
+                <com.manojbhadane.QButton
+                    android:id="@+id/get_started"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:onClick="@{()->tutorialViewModel.onGetStartedClick()}"
+                    android:text="@string/get_started"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_16"
+                    app:qb_backgroundColor="@color/colorPrimary"
+                    app:qb_radius="0"
+                    app:qb_strokeColor="@color/space_transparent"
+                    app:qb_strokeWidth="0" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

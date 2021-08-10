@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ds="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.tripinquirypage.TripInquiryActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="tripInquiryViewModel"
+            type="com.sage.cabapp.ui.tripinquirypage.TripInquiryViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ramotion.directselect.DSListView
+            android:id="@+id/ds_problem_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="invisible"
+            ds:picker_box_view="@id/ds_problem_picker"
+            ds:scale_animations="true"
+            ds:scale_animations_factor="1.15"
+            ds:scale_animations_pivot_center="true"
+            ds:selected_index="0"
+            ds:selector_background="@drawable/ds_bg_list_selector" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->tripInquiryViewModel.onBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="@string/specific_trip_inquiry"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/margin_30"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_20"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:text="Your trip"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:background="#C2C2C2" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_15">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/trip_date"
+                                android:textColor="@color/edittext_color"
+                                android:textSize="@dimen/textsize_14" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="@dimen/margin_3"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Toyota Corolla"
+                                    android:textColor="@color/description"
+                                    android:textSize="@dimen/textsize_12" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_5"
+                                    android:background="@drawable/ic_rounded_car_plate_number"
+                                    android:gravity="center"
+                                    android:padding="@dimen/margin_5"
+                                    fontPath="fonts/Roboto-Medium.ttf"
+                                    android:text="KPY3578"
+                                    android:textColor="@color/edittext_color"
+                                    android:textSize="@dimen/textsize_10" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="end"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/trip_fare"
+                                fontPath="fonts/Roboto-Medium.ttf"
+                                android:textColor="@color/description"
+                                android:textSize="@dimen/textsize_14" />
+
+                            <com.willy.ratingbar.ScaleRatingBar
+                                android:id="@+id/rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                app:srb_clearRatingEnabled="true"
+                                app:srb_clickable="true"
+                                app:srb_drawableEmpty="@drawable/ic_star_unfilled"
+                                app:srb_drawableFilled="@drawable/ic_star"
+                                app:srb_isIndicator="true"
+                                app:srb_minimumStars="0"
+                                app:srb_numStars="5"
+                                app:srb_rating="0"
+                                app:srb_scrollable="true"
+                                app:srb_starHeight="12dp"
+                                app:srb_starPadding="1dp"
+                                app:srb_starWidth="12dp"
+                                app:srb_stepSize="0.5" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <fragment
+                        android:id="@+id/map_view"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_marginEnd="@dimen/margin_15" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin_15"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:text="Let us know what’s going on"
+                        android:textColor="#3A3A3C"
+                        android:textSize="@dimen/textsize_20" />
+
+
+                    <com.sage.cabapp.ui.tripinquirypage.AdvancedProblemPickerBox
+                        android:id="@+id/ds_problem_picker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:background="@drawable/picker_box" />
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_200"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:background="@drawable/rectangle_light_grey">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/comments_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:gravity="start|top"
+                            android:hint="@string/inquiry_hint"
+                            android:inputType="textCapSentences|textMultiLine"
+                            android:maxLength="2000"
+                            android:maxLines="100"
+                            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ,$@#&amp;."
+                            android:overScrollMode="always"
+                            android:padding="@dimen/margin_10"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </androidx.core.widget.NestedScrollView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:id="@+id/add_images"
+                        android:onClick="@{()->tripInquiryViewModel.addImagesClick()}"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:background="@drawable/rectangle_light_grey">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/margin_20"
+                            android:paddingTop="@dimen/margin_10"
+                            android:paddingEnd="@dimen/margin_20"
+                            android:paddingBottom="@dimen/margin_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:text="Add file here"
+                                android:textColor="@color/description"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/ic_add_license_photo" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_15"
+                        android:id="@+id/inquiry_images_recyclerview"/>
+
+                    <com.manojbhadane.QButton
+                        android:id="@+id/next_submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_40"
+                        android:gravity="center"
+                        android:onClick="@{()->tripInquiryViewModel.submitInquiry()}"
+                        android:text="@string/submit"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textsize_16"
+                        app:qb_backgroundColor="@color/colorPrimary"
+                        app:qb_radius="0"
+                        app:qb_strokeColor="@color/space_transparent"
+                        app:qb_strokeWidth="0" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

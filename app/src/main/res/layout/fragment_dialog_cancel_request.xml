@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/cancel">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/margin_20"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Cancel this request?"
+                    android:textColor="@color/heading"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:textSize="@dimen/textsize_24" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="You won't be charged a cancellation fee."
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_12" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.manojbhadane.QButton
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/dont_cancel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="@dimen/margin_20"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_16"
+            app:qb_backgroundColor="@color/colorPrimary"
+            app:qb_radius="0"
+            app:qb_strokeColor="@color/space_transparent"
+            app:qb_strokeWidth="0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dont_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/margin_12"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_20"
+            android:gravity="center"
+            android:text="@string/dont_cancel_request"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textsize_16"
+            android:background="@drawable/rectangle_green" />
+
+    </RelativeLayout>
+
+</FrameLayout>

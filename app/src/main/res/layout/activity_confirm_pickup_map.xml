@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.confirmpickup.ConfirmPickupMapActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="confirmMapViewModel"
+            type="com.sage.cabapp.ui.confirmpickup.ConfirmPickupMapViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/map_view"
+                android:name="com.sage.cabapp.utils.MySupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/fill_location_layout" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/fill_location_layout">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/map_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/view"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/ic_map_pin" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/locback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_40"
+                android:background="@drawable/ic_arrow_back_black"
+                android:focusable="true"
+                android:onClick="@{()->confirmMapViewModel.goBack()}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/fill_location_layout"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/margin_10"
+                android:id="@+id/navigation_icon"
+                android:visibility="gone"
+                android:background="@drawable/ic_location_indicator"
+                android:onClick="@{()->confirmMapViewModel.clickNavigation()}" />
+
+            <LinearLayout
+                android:id="@+id/fill_location_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_20">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:text="Confirm your pick-up"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="Move the map to indicate your exact location before placing an order."
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_12" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:background="@drawable/rectangle_light_grey">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_select_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/search_icon"
+                        android:padding="@dimen/margin_15"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/search_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{()->confirmMapViewModel.clickSearch()}"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:background="@drawable/ic_search_location_green" />
+
+                </RelativeLayout>
+
+                <com.manojbhadane.QButton
+                    android:id="@+id/get_started"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:onClick="@{()->confirmMapViewModel.clickConfirm()}"
+                    android:text="@string/confirm"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_16"
+                    app:qb_backgroundColor="@color/colorPrimary"
+                    app:qb_radius="0"
+                    app:qb_strokeColor="@color/space_transparent"
+                    app:qb_strokeWidth="0" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

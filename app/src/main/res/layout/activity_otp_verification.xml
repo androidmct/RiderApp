@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.verifyotp.VerifyOTPActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="otpViewModel"
+            type="com.sage.cabapp.ui.verifyotp.VerifyOTPViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/otpback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:background="@drawable/ic_arrow_back_black"
+                android:focusable="true"
+                android:onClick="@{()->otpViewModel.goBack()}" />
+
+            <LinearLayout
+                android:id="@+id/otp_subview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_20"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:text="@string/enter_verification_code"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_otp_desc"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_30"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_30"
+                    android:gravity="center"
+                    android:textColor="@color/description"
+                    android:textSize="@dimen/textsize_14" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_25"
+                android:layout_marginStart="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_10">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/pin_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_first_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_second_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_third_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_forth_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_fifth_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/pin_sixth_edittext"
+                        style="@style/pin_edittext_style"
+                        android:layout_width="@dimen/otp_width"
+                        android:layout_height="@dimen/otp_height"
+                        android:layout_margin="@dimen/margin_5"
+                        android:background="@drawable/otp_background"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize_16" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/pin_hidden_edittext"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textColor="@color/transparent" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/error_message_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_110"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:textColor="@color/red"
+                android:textSize="@dimen/textsize_12"
+                android:visibility="gone" />
+
+            <com.manojbhadane.QButton
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:onClick="@{()->otpViewModel.checkCode()}"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_16"
+                app:qb_backgroundColor="@color/colorPrimary"
+                app:qb_radius="0"
+                app:qb_strokeColor="@color/space_transparent"
+                app:qb_strokeWidth="0" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resendcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="@{()->otpViewModel.resendCode()}"
+                android:padding="@dimen/margin_10"
+                android:gravity="center"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </FrameLayout>
+
+</layout>

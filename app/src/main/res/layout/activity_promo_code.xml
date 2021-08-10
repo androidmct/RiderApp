@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.promocode.PromoCodeActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="promoCodeViewModel"
+            type="com.sage.cabapp.ui.promocode.PromoCodeViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->promoCodeViewModel.onBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="@string/promo"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:background="@color/light_gray" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/no_promo_code"
+                fontPath="fonts/Roboto-Medium.ttf"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/no_promo_code"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/textsize_24" />
+
+            <com.manojbhadane.QButton
+                android:id="@+id/add_promo_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_20"
+                android:onClick="@{()->promoCodeViewModel.addPromoCode()}"
+                android:text="@string/add_promo_code"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_16"
+                app:qb_backgroundColor="@color/colorPrimary"
+                app:qb_radius="0"
+                app:qb_strokeColor="@color/space_transparent"
+                app:qb_strokeWidth="0" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

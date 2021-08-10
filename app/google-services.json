@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "397868148068",
+    "firebase_url": "https://sage-rider-android.firebaseio.com",
+    "project_id": "sage-rider-android",
+    "storage_bucket": "sage-rider-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397868148068:android:79358bcbd183d15ec98671",
+        "android_client_info": {
+          "package_name": "com.sage.cabapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "397868148068-fja92j56r54dfpp6vu7nf0il5tlgt6bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sage.cabapp",
+            "certificate_hash": "bce51b5e7443787302661921af94f2059bc16d32"
+          }
+        },
+        {
+          "client_id": "397868148068-c7q526t9j198ub17u3oc9n6rq5gs7usf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4sfdomOIcDKV9utKO-sqd0izOeuLD7i8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "397868148068-c7q526t9j198ub17u3oc9n6rq5gs7usf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

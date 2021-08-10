@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.updateroute.UpdateRouteActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="updateRouteViewModel"
+            type="com.sage.cabapp.ui.updateroute.UpdateRouteViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/margin_20"
+                        android:background="@drawable/ic_arrow_back_black"
+                        android:onClick="@{()->updateRouteViewModel.goBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_toEndOf="@+id/back"
+                        android:text="@string/update_address"
+                        android:textSize="@dimen/textsize_20" />
+
+                </RelativeLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/margin_80">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_5"
+                                    android:background="@drawable/ic_current_location_pin" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:background="@drawable/ic_address_line" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/et_sourceaddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/margin_15"
+                                    android:layout_marginTop="@dimen/margin_7"
+                                    android:background="@color/white"
+                                    android:cursorVisible="false"
+                                    android:maxLength="150"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,-/."                                    android:drawablePadding="@dimen/margin_10"
+                                    android:imeOptions="actionDone"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:textColor="@color/heading"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginStart="@dimen/margin_10"
+                                    android:layout_marginTop="@dimen/margin_25"
+                                    android:background="#D0D0D0" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_5"
+                                    android:background="@drawable/ic_destination_pin" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/add_stop_address_line"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:background="@drawable/ic_address_line"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <androidx.appcompat.widget.AppCompatEditText
+                                        android:id="@+id/et_destinationaddress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_15"
+                                        android:layout_marginTop="@dimen/margin_7"
+                                        android:layout_marginEnd="@dimen/margin_10"
+                                        android:layout_toStartOf="@+id/add_click"
+                                        android:background="@color/white"
+                                        android:cursorVisible="false"
+                                        android:drawablePadding="@dimen/margin_10"
+                                        android:maxLength="150"
+                                        android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,-/."                                        android:hint="Punch in destination"
+                                        android:imeOptions="actionDone"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/heading"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/add_click"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginTop="@dimen/margin_6"
+                                        android:background="@drawable/ic_add_grey"
+                                        android:onClick="@{()->updateRouteViewModel.addMoreStopClick()}" />
+
+                                </RelativeLayout>
+
+                                <View
+                                    android:id="@+id/add_stop_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginStart="@dimen/margin_10"
+                                    android:layout_marginTop="@dimen/margin_25"
+                                    android:background="#D0D0D0"
+                                    android:visibility="gone" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/add_stop_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/des1_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:background="@drawable/ic_destination_pin" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/et_destinationaddresssecond"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_15"
+                                android:layout_marginTop="@dimen/margin_2"
+                                android:layout_marginEnd="@dimen/margin_10"
+                                android:layout_toStartOf="@+id/cancel_click"
+                                android:layout_toEndOf="@+id/des1_icon"
+                                android:background="@color/white"
+                                android:cursorVisible="false"
+                                android:maxLength="150"
+                                android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,-/."                                android:drawablePadding="@dimen/margin_10"
+                                android:hint="Add a stop"
+                                android:imeOptions="actionDone"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:textColor="@color/heading"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/cancel_click"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_3"
+                                android:background="@drawable/ic_remove_gray"
+                                android:onClick="@{()->updateRouteViewModel.cancelStopClick()}" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/margin_5"
+                            android:layout_marginTop="@dimen/margin_8"
+                            android:background="@color/light_gray" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/places_layout"
+                                android:visibility="gone"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:id="@+id/add_home"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="@{()->updateRouteViewModel.clickHome()}"
+                                        android:padding="@dimen/margin_15">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/add_home_image"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_centerVertical="true"
+                                            android:background="@drawable/ic_home_grey" />
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginStart="15dp"
+                                            android:layout_toEndOf="@+id/add_home_image">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/home_address"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Add home"
+                                                    android:textColor="@color/heading"
+                                                    android:textSize="@dimen/textsize_14" />
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/actual_home_address"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textColor="@color/description"
+                                                    android:textSize="@dimen/textsize_12"
+                                                    android:visibility="gone" />
+                                            </LinearLayout>
+                                        </RelativeLayout>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:background="@drawable/ic_expand_more" />
+
+                                    </RelativeLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="#D0D0D0" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:id="@+id/add_work"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:onClick="@{()->updateRouteViewModel.clickWork()}"
+                                        android:padding="@dimen/margin_15">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/add_work_image"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_centerVertical="true"
+                                            android:background="@drawable/ic_work_grey" />
+
+                                        <RelativeLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginStart="15dp"
+                                            android:layout_toEndOf="@+id/add_work_image">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/work_address"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Add work"
+                                                    android:textColor="@color/heading"
+                                                    android:textSize="@dimen/textsize_14" />
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/actual_work_address"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textColor="@color/description"
+                                                    android:textSize="@dimen/textsize_12"
+                                                    android:visibility="gone" />
+                                            </LinearLayout>
+
+
+                                        </RelativeLayout>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:background="@drawable/ic_expand_more" />
+
+                                    </RelativeLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="#D0D0D0" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/source_places_recycler_view"
+                                android:layout_width="match_parent"
+                                android:background="@color/white"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:orientation="vertical"
+                                android:paddingBottom="@dimen/margin_80"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/destination_places_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:orientation="vertical"
+                                android:paddingBottom="@dimen/margin_80"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/appreciate_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/confirm"
+                android:layout_margin="@dimen/margin_20"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_40"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="We appreciate your business and time"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:gravity="center_horizontal"
+                    android:text="Limit each of your stop to 3 minutes or the fare may change. Thank you. Sage and save rides!!"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_12" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.manojbhadane.QButton
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/margin_20"
+                android:gravity="center"
+                android:onClick="@{()->updateRouteViewModel.confirmSetAddress()}"
+                android:text="@string/confirm"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_16"
+                android:visibility="gone"
+                app:qb_backgroundColor="@color/colorPrimary"
+                app:qb_radius="0"
+                app:qb_strokeColor="@color/space_transparent"
+                app:qb_strokeWidth="0" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

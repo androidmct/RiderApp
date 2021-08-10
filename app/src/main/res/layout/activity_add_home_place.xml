@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addhomeplace.AddHomePlaceActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addHomeViewModel"
+            type="com.sage.cabapp.ui.addhomeplace.AddHomePlaceViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="@dimen/margin_20"
+                            android:background="@drawable/ic_arrow_back_black"
+                            android:onClick="@{()->addHomeViewModel.onBack()}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            fontPath="fonts/Roboto-Medium.ttf"
+                            android:id="@+id/home_text"
+                            android:layout_marginStart="@dimen/margin_10"
+                            android:layout_toEndOf="@+id/back"
+                            android:textSize="@dimen/textsize_20" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/map"
+                            android:layout_width="wrap_content"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="@dimen/margin_20"
+                            android:background="@drawable/ic_map_black"
+                            android:onClick="@{()->addHomeViewModel.fromMap()}" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/delete_home"
+                            android:layout_width="wrap_content"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="@dimen/margin_20"
+                            android:background="@drawable/ic_trash_black"
+                            android:onClick="@{()->addHomeViewModel.delete()}" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:background="@drawable/rectangle_light_grey">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/margin_10"
+                        android:paddingTop="@dimen/margin_10"
+                        android:paddingEnd="@dimen/margin_10"
+                        android:paddingBottom="@dimen/margin_10">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/home_green_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/ic_home_fill_green" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_homeaddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_10"
+                            android:layout_toEndOf="@+id/home_green_icon"
+                            android:background="@color/white"
+                            android:hint="Enter home address"
+                            android:imeOptions="actionDone"
+                            android:maxLength="150"
+                            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 ,-/."                            android:maxLines="1"
+                            android:drawablePadding="@dimen/margin_10"
+                            android:singleLine="true"
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@color/light_gray" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeaddress_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/no_address_found"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/margin_15"
+                android:layout_marginEnd="@dimen/margin_15"
+                android:gravity="center"
+                android:text="Sorry, we can't find this location.\nPlease re-enter it."
+                android:textColor="@color/heading"
+                android:textSize="@dimen/textsize_24"
+                android:visibility="gone" />
+
+            <com.manojbhadane.QButton
+                android:id="@+id/confirm_home_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:onClick="@{()->addHomeViewModel.submitHomeAddress()}"
+                android:text="@string/confirm"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/margin_20"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_16"
+                android:visibility="gone"
+                app:qb_backgroundColor="@color/colorPrimary"
+                app:qb_radius="0"
+                app:qb_strokeColor="@color/space_transparent"
+                app:qb_strokeWidth="0" />
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+</layout>

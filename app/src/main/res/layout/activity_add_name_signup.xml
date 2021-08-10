@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addnamesignup.AddNameSignupActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="nameViewModel"
+            type="com.sage.cabapp.ui.addnamesignup.AddNameSignupViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:background="@drawable/ic_arrow_back_black"
+                android:onClick="@{()->nameViewModel.goBack()}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_20"
+                    fontPath="fonts/Roboto-Medium.ttf"
+                    android:text="@string/add_name"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/textsize_20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_30"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_30"
+                    android:gravity="center"
+                    android:text="@string/add_name_desc"
+                    android:textColor="@color/description"
+                    android:textSize="@dimen/textsize_14" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_30"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:background="@drawable/rectangle_light_grey">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingTop="@dimen/margin_10"
+                        android:paddingEnd="@dimen/margin_10"
+                        android:paddingBottom="@dimen/margin_10">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_first_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:hint="First name"
+                            android:drawablePadding="@dimen/margin_10"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:maxLength="30"
+                            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
+                            android:singleLine="true"
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:background="@drawable/rectangle_light_grey">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingTop="@dimen/margin_10"
+                        android:paddingEnd="@dimen/margin_10"
+                        android:paddingBottom="@dimen/margin_10">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/et_last_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:hint="Last name"
+                            android:drawablePadding="@dimen/margin_10"
+                            android:imeOptions="actionDone"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:maxLength="30"
+                            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
+                            android:singleLine="true"
+                            android:textColor="@color/edittext_color"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <com.manojbhadane.QButton
+                    android:id="@+id/next_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:onClick="@{()->nameViewModel.nextName()}"
+                    android:text="@string/next"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_16"
+                    app:qb_backgroundColor="@color/colorPrimary"
+                    app:qb_radius="0"
+                    app:qb_strokeColor="@color/space_transparent"
+                    app:qb_strokeWidth="0" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+
+</layout>

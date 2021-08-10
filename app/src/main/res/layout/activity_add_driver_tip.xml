@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addrivertip.AddDriverTipActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="addDriverTipViewModel"
+            type="com.sage.cabapp.ui.addrivertip.AddDriverTipViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="@dimen/margin_80"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/margin_50"
+                    tools:ignore="UselessParent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/driver_pic"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                    <com.willy.ratingbar.ScaleRatingBar
+                        android:id="@+id/rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:srb_clearRatingEnabled="true"
+                        app:srb_clickable="true"
+                        app:srb_drawableEmpty="@drawable/ic_star_unfilled"
+                        app:srb_drawableFilled="@drawable/ic_star"
+                        app:srb_isIndicator="true"
+                        app:srb_minimumStars="0"
+                        app:srb_numStars="5"
+                        app:srb_rating="0"
+                        app:srb_scrollable="true"
+                        app:srb_starHeight="30dp"
+                        app:srb_starPadding="5dp"
+                        app:srb_starWidth="30dp"
+                        app:srb_stepSize="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/driver_name"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_24" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/your_trip_fare"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_12" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_tip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="80dp"
+                        android:background="@drawable/rectangle_light_grey"
+                        android:gravity="center"
+                        android:hint="$0.00"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingEnd="@dimen/margin_20"
+                        android:textColor="@color/edittext_color"
+                        android:textColorHint="#D0D0D0"
+                        android:textSize="@dimen/textsize_36" />
+
+                    <com.manojbhadane.QButton
+                        android:id="@+id/submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:gravity="center"
+                        android:onClick="@{()->addDriverTipViewModel.submitTip()}"
+                        android:text="@string/submit"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textsize_16"
+                        app:qb_backgroundColor="@color/colorPrimary"
+                        app:qb_radius="0"
+                        app:qb_strokeColor="@color/space_transparent"
+                        app:qb_strokeWidth="0" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/trip_total"
+                        fontPath="fonts/Roboto-Medium.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Trip total $19.55"
+                        android:textColor="@color/edittext_color"
+                        android:textSize="@dimen/textsize_14" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>
